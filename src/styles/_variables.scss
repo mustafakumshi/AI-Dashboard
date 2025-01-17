@@ -1,7 +1,11 @@
 // Colors
-$primary-color: #3b20d6;   // Purple
-$secondary-color: #000000; // Black for text and strong contrasts
-$background-color: #ffffff; // White background for a clean UI
 
-$light-gray: #f4f4f4;  // Light gray for subtle background
-$accent-color: #ff9800; // Example accent color (orange) for AI highlights or secondary actions
+// Light Theme Colors
+$light-background: #fff;
+$light-text: #000;
+$light-primary: #3b20d6;
+
+// Dark Theme Colors
+$dark-background: #181818;
+$dark-text: #fff;
+$dark-primary: #9c27b0;
