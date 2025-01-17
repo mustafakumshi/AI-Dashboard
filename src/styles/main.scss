@@ -1,0 +1,50 @@
+// Imports
+@use './variables' as *;  // Using variables file
+@use './reset' as *;      // Using reset file
+
+@use 'sass:color'; // Import the built-in color module
+
+// Global styles
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $background-color; /* White background */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $secondary-color; /* Text color black */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  color: $primary-color; /* Purple color for headings */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Button Styling Example */
+.button {
+  background-color: $primary-color;
+  color: $background-color;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: color.adjust($primary-color, $lightness: -10%);
+  }
+}
+
+/* Example Card or Section */
+.card {
+  background-color: $light-gray;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
