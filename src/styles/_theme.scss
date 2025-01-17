@@ -1,0 +1,15 @@
+@use './variables' as *;  // Using variables file
+
+// Default Dark theme
+:root {
+    --background-color: #{$dark-background};
+    --text-color: #{$dark-text};
+    --primary-color: #{$dark-primary};
+  }
+  
+  // Light theme overrides
+  [data-theme='light'] {
+    --background-color: #{$light-background};
+    --text-color: #{$light-text};
+    --primary-color: #{$light-primary};
+  }
