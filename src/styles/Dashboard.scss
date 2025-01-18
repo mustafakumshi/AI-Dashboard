@@ -1,14 +1,13 @@
-// Importing variables and mixins
-@use './variables' as *;  // Make sure to have your color variables for dark/light themes
+@use './variables' as *;
 
 .dashboard-container {
-  margin-top: 76px;  
+  margin-top: 76px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   background-color: $primary-background; // Background color for light theme
-  min-height: 100vh;
+  min-height: calc(100vh - 192px);
 
   @media (max-width: 768px) {
     margin-top: 58px;
@@ -42,6 +41,40 @@
       grid-gap: 15px;
     }
   }
+
+  // Loader Styles
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 192px);
+  }
+
+  .loader {
+    border: 4px solid #f3f3f3; /* Light gray */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  // Error message styles
+  .error-message {
+    background-color: #ffcccc;
+    padding: 20px;
+    border-radius: 5px;
+    color: #d9534f;
+    text-align: center;
+    font-size: 16px;
+    max-width: 800px;
+    margin: 20px auto;
+  }
 }
 
 [data-theme='dark'] {
@@ -62,24 +95,44 @@
   h3 {
     color: $dark-primary; // Light text for titles in dark mode
   }
+
+  // Loader for dark theme
+  .loader {
+    border-top: 4px solid #3498db; /* Blue */
+  }
+
+  .error-message {
+    background-color: #d9534f;
+    color: white;
+  }
 }
 
 [data-theme='light'] {
-    .dashboard-container {
-      background-color: $light-dashboard-container; // Dark background for dark theme
-      color: $light-text; // Text color for dark theme
-    }
-  
-    .chart-container {
-      background-color: $light-background; // Dark background for charts
-      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); // Light shadow for dark theme
-    }
-
-    .chart {
-        background-color: $light-background;
-    }
-  
-    h3 {
-      color: $light-primary; // Light text for titles in dark mode
-    }
+  .dashboard-container {
+    background-color: $light-dashboard-container; // Light background for light theme
+    color: $light-text; // Text color for light theme
   }
+
+  .chart-container {
+    background-color: $light-background; // Light background for charts
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); // Light shadow for light theme
+  }
+
+  .chart {
+    background-color: $light-background;
+  }
+
+  h3 {
+    color: $light-primary; // Light text for titles in light mode
+  }
+
+  // Loader for light theme
+  .loader {
+    border-top: 4px solid #3498db; /* Blue */
+  }
+
+  .error-message {
+    background-color: #ffcccc;
+    color: #d9534f;
+  }
+}
