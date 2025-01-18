@@ -5,8 +5,10 @@ import FooterBottom from './FooterBottom'; // Import FooterBottom component
 const Footer = () => {
   return (
     <footer className="footer">
+      <div className="footer-inner">
       <FooterTop/>
       <FooterBottom />
+      </div>  
     </footer>
   );
 };

@@ -2,7 +2,7 @@
 @use './variables' as *;  // Make sure to have your color variables for dark/light themes
 
 .dashboard-container {
-  margin-top: 80px;  
+  margin-top: 76px;  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,24 +10,26 @@
   background-color: $primary-background; // Background color for light theme
   min-height: 100vh;
 
+  @media (max-width: 768px) {
+    margin-top: 58px;
+  }
+
   // Grid for charts
   .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; // 3 columns for desktop
+    grid-template-columns: 1fr 1fr; // 2 columns for desktop
     grid-gap: 20px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
 
     // Styling for each chart container
-    .chart-container {
-      background-color: $light-background; // Light background for charts
+    .chart {
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
       // Title styling
       h3 {
-        color: $light-primary;
         font-size: 18px;
         margin-bottom: 10px;
         text-align: center;
@@ -42,9 +44,9 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
+[data-theme='dark'] {
   .dashboard-container {
-    background-color: $dark-background; // Dark background for dark theme
+    background-color: $dark-dashboard-container; // Dark background for dark theme
     color: $dark-text; // Text color for dark theme
   }
 
@@ -53,7 +55,31 @@
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); // Light shadow for dark theme
   }
 
+  .chart {
+    background: $dark-chart;
+  }
+
   h3 {
     color: $dark-primary; // Light text for titles in dark mode
   }
 }
+
+[data-theme='light'] {
+    .dashboard-container {
+      background-color: $light-dashboard-container; // Dark background for dark theme
+      color: $light-text; // Text color for dark theme
+    }
+  
+    .chart-container {
+      background-color: $light-background; // Dark background for charts
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); // Light shadow for dark theme
+    }
+
+    .chart {
+        background-color: $light-background;
+    }
+  
+    h3 {
+      color: $light-primary; // Light text for titles in dark mode
+    }
+  }

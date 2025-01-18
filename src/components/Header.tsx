@@ -12,10 +12,12 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
 
   return (
     <header className="header">
+      <div className='header-inner'> 
       <h1>{children}</h1>
       <button className="theme-toggle" onClick={toggleMode}>
         {mode === 'light' ? <FaMoon size={24} /> : <FaSun size={24} />}
       </button>
+      </div> 
     </header>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 
 interface LineChartComponentProps {
   data: Array<any>;
@@ -7,9 +7,10 @@ interface LineChartComponentProps {
   yDataKey: string;
   title: string;
   strokeColor: string;
+  isCartesian: boolean;
 }
 
-const LineChartComponent: React.FC<LineChartComponentProps> = ({ data, xDataKey, yDataKey, title, strokeColor }) => {
+const LineChartComponent: React.FC<LineChartComponentProps> = ({ data, xDataKey, yDataKey, title, strokeColor, isCartesian }) => {
   return (
     <div className="chart">
       <h3>{title}</h3>
@@ -18,6 +19,7 @@ const LineChartComponent: React.FC<LineChartComponentProps> = ({ data, xDataKey,
           <XAxis dataKey={xDataKey} />
           <YAxis />
           <Tooltip />
+          {isCartesian && <CartesianGrid strokeDasharray="3 3" />}
           <Line type="monotone" dataKey={yDataKey} stroke={strokeColor} />
         </LineChart>
       </ResponsiveContainer>
