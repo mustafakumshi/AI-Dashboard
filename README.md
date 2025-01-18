@@ -41,7 +41,7 @@ To get started, follow the steps below:
 
 - **Recharts**: A charting library for rendering dynamic, interactive charts in React applications. Recharts is used to display various charts like bar charts, pie charts, and line charts in the dashboard for visualizing the celebrity data.
 
- **React Query**: A data-fetching and state management library that simplifies working with server data. React Query is used in this project to manage asynchronous data fetching, caching, and syncing, reducing boilerplate code for handling data fetching logic. It automatically handles background refetching, caching, and data synchronization for more efficient API requests.
+- **React Query**: A data-fetching and state management library that simplifies working with server data. React Query is used in this project to manage asynchronous data fetching, caching, and syncing, reducing boilerplate code for handling data fetching logic. It automatically handles background refetching, caching, and data synchronization for more efficient API requests.
 
 - **SCSS (Sass)**: A powerful CSS preprocessor used to style the application. SCSS is used for managing the styles with variables, mixins, and reusable code blocks, making it easier to maintain and adjust the design for both light and dark themes.
 
