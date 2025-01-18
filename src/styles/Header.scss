@@ -1,0 +1,85 @@
+@use './variables' as *;  // Using variables file
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: $dark-background;  // Default dark background
+  color: $dark-text;  // Default dark text color
+  position: fixed;  
+  top: 0;  
+  left: 0;
+  right: 0;
+  z-index: 10;  // Make sure it appears above other content
+  transition: all 0.3s ease;
+  
+  h1 {
+    font-size: 32px;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+  }
+
+  .theme-toggle {
+    display: flex;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: $dark-text;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $dark-theme-hover;  // Default dark hover color
+    }
+  }
+}
+
+// Light theme styles (using theme variables directly)
+[data-theme='light'] {
+  .header {
+    background-color: $light-background;
+    color: $light-primary;
+
+    .theme-toggle {
+      color: $light-primary;
+
+      &:hover {
+        color: $light-theme-hover;  // Light theme hover color
+      }
+    }
+  }
+}
+
+// Dark theme styles (using theme variables directly)
+[data-theme='dark'] {
+  .header {
+    background-color: $dark-background;
+    color: $dark-primary;
+
+    .theme-toggle {
+      color: $dark-primary;
+
+      &:hover {
+        color: $dark-theme-hover;  // Dark theme hover color
+      }
+    }
+  }
+}
+
+// Responsive Styles for smaller screen sizes
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 10px 20px;
+  }
+  
+  h1 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .theme-toggle {
+    font-size: 20px;
+  }
+}

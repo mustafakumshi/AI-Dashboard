@@ -1,11 +1,16 @@
-// Colors
+// Colors for the Light Theme
+$light-background: #ffffff;
+$light-text: #000000;
+$light-primary: #3b20d6;   // Base Primary Color for Light Theme
+$light-theme-hover: #cfd8dc;      
 
-// Light Theme Colors
-$light-background: #fff;
-$light-text: #000;
-$light-primary: #3b20d6;
-
-// Dark Theme Colors
+// Colors for the Dark Theme
 $dark-background: #181818;
-$dark-text: #fff;
-$dark-primary: #9c27b0;
+$dark-text: #ffffff;
+$dark-primary: #9c27b0;     // Base Primary Color for Dark Theme
+$dark-theme-hover: #ffb74d;       
+
+// Common Color Variables (to avoid redundancy)
+$primary-background: #f0f0f0;
+$secondary-background: #e0e0e0;
+$border-color: #ccc;
