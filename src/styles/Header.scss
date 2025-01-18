@@ -5,8 +5,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: $dark-background;  // Default dark background
-  color: $dark-text;  // Default dark text color
   position: fixed;  
   top: 0;  
   left: 0;
@@ -29,10 +27,6 @@
     font-size: 24px;
     color: $dark-text;
     transition: color 0.3s ease;
-
-    &:hover {
-      color: $dark-theme-hover;  // Default dark hover color
-    }
   }
 }
 
