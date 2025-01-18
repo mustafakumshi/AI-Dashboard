@@ -6,11 +6,13 @@ import LineChartComponent from "./charts/LineChartComponent";
 import "../styles/Dashboard.scss";
 
 const Dashboard = () => {
-  const {
-    categoryDistribution,
-    responseTimes,
-    userSatisfaction,
-    usageStatistics,
+  const { 
+    categoryDistribution, 
+    responseTimes, 
+    userSatisfaction, 
+    usageStatistics, 
+    isLoading, 
+    errorMessage 
   } = useSelector((state: RootState) => state.aiData);
 
   // Safely handle potential null or undefined values
@@ -24,26 +26,20 @@ const Dashboard = () => {
   const dailyResponseData =
     responseTimes?.day_wise?.map((item) => {
       const updatedItem: { [key: string]: any } = {};
-
-      // Iterate through each key in the item and replace _ with space
       Object.keys(item).forEach((key) => {
-        const updatedKey = key.replace(/_/g, " "); // Replacing _ with space
+        const updatedKey = key.replace(/_/g, " ");
         updatedItem[updatedKey] = item[key as keyof typeof item];
       });
-
       return updatedItem;
     }) || [];
 
   const weeklyResponseData =
     responseTimes?.week_wise?.map((item) => {
       const updatedItem: { [key: string]: any } = {};
-
-      // Iterate through each key in the item and replace _ with space
       Object.keys(item).forEach((key) => {
-        const updatedKey = key.replace(/_/g, " "); // Replacing _ with space
+        const updatedKey = key.replace(/_/g, " ");
         updatedItem[updatedKey] = item[key as keyof typeof item];
       });
-
       return updatedItem;
     }) || [];
 
@@ -51,76 +47,90 @@ const Dashboard = () => {
   const platformUsageData = usageStatistics?.by_platform || {};
   const countryDistributionData = usageStatistics?.by_country || {};
 
-  // Colors for Pie charts
   const pieColors = ["#3b20d6", "#ff7300", "#ffbf00", '#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
   const primaryColor = "#3b20d6"
 
   return (
     <div className="dashboard-container">
-      <div className="grid">
-        {categoryData && (
-          <BarChartComponent
-            data={categoryData}
-            xDataKey="category"
-            yDataKey="count"
-            title="Category Distribution"
-            fillColor={primaryColor}
+      {/* Display loading spinner if data is loading */}
+      {isLoading && (
+        <div className="loader-container">
+          <div className="loader"></div>
+        </div>
+      )}
+
+      {/* Display error message if there's an error */}
+      {errorMessage && (
+        <div className="error-message">
+          <p>{errorMessage}</p>
+        </div>
+      )}
+
+      {/* If data is not loading and no error, display the charts */}
+      {!isLoading && !errorMessage && (
+        <div className="grid">
+          {categoryData && (
+            <BarChartComponent
+              data={categoryData}
+              xDataKey="category"
+              yDataKey="count"
+              title="Category Distribution"
+              fillColor={primaryColor}
+              isCartesian={true}
+            />
+          )}
+          <PieChartComponent
+            data={satisfactionData}
+            dataKey="count"
+            nameKey="rating"
+            title="User Satisfaction"
+            innerRadius={55}
+            outerRadius={80}
+            colors={pieColors}
+            customLabel={({ name }) => `${name}⭐`}
+            paddingAngle={4}
+          />
+          <LineChartComponent
+            data={dailyResponseData}
+            xDataKey="date"
+            yDataKey="average time"
+            title="Daily Response Time"
+            strokeColor={primaryColor}
+            isCartesian={false}
+          />
+          <LineChartComponent
+            data={weeklyResponseData}
+            xDataKey="week"
+            yDataKey="average time"
+            title="Weekly Response Time"
+            strokeColor={primaryColor}
             isCartesian={true}
           />
-        )}
-
-        <PieChartComponent
-          data={satisfactionData}
-          dataKey="count"
-          nameKey="rating"
-          title="User Satisfaction"
-          innerRadius={55}
-          outerRadius={80}
-          colors={pieColors}
-          customLabel={({ name }) => `${name}⭐`}
-          paddingAngle={4}
-        />
-        <LineChartComponent
-          data={dailyResponseData}
-          xDataKey="date"
-          yDataKey="average time"
-          title="Daily Response Time"
-          strokeColor={primaryColor}
-          isCartesian={false}
-        />
-
-        <LineChartComponent
-          data={weeklyResponseData}
-          xDataKey="week"
-          yDataKey="average time"
-          title="Weekly Response Time"
-          strokeColor={primaryColor}
-          isCartesian={true}
-        />
-        <PieChartComponent
-          data={Object.entries(platformUsageData).map(([platform, count]) => ({
-            platform,
-            count,
-          }))}
-          dataKey="count"
-          nameKey="platform"
-          title="Platform Usage"
-          colors={pieColors}
-          innerRadius={0}
-          outerRadius={80}
-          customLabel={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-        />
-        <BarChartComponent
-          data={Object.entries(countryDistributionData).map(
-            ([country, count]) => ({ country, count })
-          )}
-          xDataKey="country"
-          yDataKey="count"
-          title="Country Distribution"
-          fillColor={primaryColor}
-          isCartesian={false}
-        />
-      </div>
+          <PieChartComponent
+            data={Object.entries(platformUsageData).map(([platform, count]) => ({
+              platform,
+              count,
+            }))}
+            dataKey="count"
+            nameKey="platform"
+            title="Platform Usage"
+            colors={pieColors}
+            innerRadius={0}
+            outerRadius={80}
+            customLabel={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+          />
+          <BarChartComponent
+            data={Object.entries(countryDistributionData).map(
+              ([country, count]) => ({ country, count })
+            )}
+            xDataKey="country"
+            yDataKey="count"
+            title="Country Distribution"
+            fillColor={primaryColor}
+            isCartesian={false}
+          />
+        </div>
+      )}
     </div>
   );
 };
