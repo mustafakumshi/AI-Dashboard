@@ -1,3 +1,4 @@
+import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import useAIData from './hooks/useAiData';
@@ -10,6 +11,7 @@ function App() {
   return (
     <>
    <Header>AI Dashboard</Header>
+   <Dashboard/>
    <Footer></Footer>
    </>
   )
