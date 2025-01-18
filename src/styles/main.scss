@@ -2,44 +2,21 @@
 @use './variables' as *;  // Using variables file
 @use './reset' as *;      // Using reset file
 
-@use 'sass:color'; // Import the built-in color module
-
 // Global styles
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: var(--background-color);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: var(--text-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--primary-color);
-}
-
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px;
-}
-
-/* Button Styling Example */
-.button {
-  background-color: var(--primary-color);
-  color: var(--background-color);
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .error-message {
-    color: red;
+    color: $red-color;
     font-size: 16px;
     text-align: center;
     margin-top: 20px;
-  }
+}

@@ -1,4 +1,5 @@
 @use './variables' as *;
+@use './mixins' as *;
 
 .dashboard-container {
   margin-top: 76px;
@@ -6,11 +7,10 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: $primary-background; // Background color for light theme
   min-height: calc(100vh - 192px);
 
-  @media (max-width: 768px) {
-    margin-top: 58px;
+  @include mobile {
+    margin-top: 57px;
   }
 
   // Grid for charts
@@ -21,7 +21,7 @@
     width: 100%;
     max-width: 1400px;
 
-    // Styling for each chart container
+    // Styling for each chart 
     .chart {
       padding: 20px;
       border-radius: 8px;
@@ -36,7 +36,7 @@
     }
 
     // Responsive design for mobile view (1 column on smaller screens)
-    @media (max-width: 768px) {
+    @include mobile {
       grid-template-columns: 1fr;
       grid-gap: 15px;
     }
@@ -51,8 +51,8 @@
   }
 
   .loader {
-    border: 4px solid #f3f3f3; /* Light gray */
-    border-top: 4px solid #3498db; /* Blue */
+    border: 4px solid $loader-border-color;
+    border-top: 4px solid $loader-border-top-color;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -66,10 +66,8 @@
 
   // Error message styles
   .error-message {
-    background-color: #ffcccc;
     padding: 20px;
     border-radius: 5px;
-    color: #d9534f;
     text-align: center;
     font-size: 16px;
     max-width: 800px;
@@ -98,12 +96,12 @@
 
   // Loader for dark theme
   .loader {
-    border-top: 4px solid #3498db; /* Blue */
+    border-top: 4px solid $loader-border-top-color;
   }
 
   .error-message {
-    background-color: #d9534f;
-    color: white;
+    background-color: $dark-error-bg;
+    color: $white-color;
   }
 }
 
@@ -128,11 +126,11 @@
 
   // Loader for light theme
   .loader {
-    border-top: 4px solid #3498db; /* Blue */
+    border-top: 4px solid $loader-border-top-color;
   }
 
   .error-message {
-    background-color: #ffcccc;
-    color: #d9534f;
+    background-color: $light-error-bg;
+    color: $light-error-color;
   }
 }

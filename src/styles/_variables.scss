@@ -3,18 +3,25 @@ $light-background: #eeeeee;
 $light-text: #000000;
 $light-primary: #3b20d6;   // Base Primary Color for Light Theme
 $light-theme-hover: #4ed6dd;
-$light-dashboard-container: #f5f5f5;        
+$light-dashboard-container: #f5f5f5;
+$light-error-bg : #ffcccc;
+$light-error-color : #d9534f;        
 
 // Colors for the Dark Theme
 $dark-background: #181818;
 $dark-text: #ffffff;
-$dark-primary: #ffffff;
-$dark-hover: #9c27b0;     // Base Primary Color for Dark Theme
+$dark-primary: #ffffff;   // Base Primary Color for Dark Theme
+$dark-hover: #9c27b0;    
 $dark-theme-hover: #ffb74d;   
 $dark-dashboard-container: #32313e;
-$dark-chart: #0f132a; 
+$dark-chart: #0f132a;
+$dark-error-bg: #d9534f; 
 
 // Common Color Variables (to avoid redundancy)
 $primary-background: #f0f0f0;
 $secondary-background: #e0e0e0;
 $border-color: #ccc;
+$red-color: red;
+$white-color: #ffffff;
+$loader-border-top-color: #3498db;
+$loader-border-color: #f3f3f3;
