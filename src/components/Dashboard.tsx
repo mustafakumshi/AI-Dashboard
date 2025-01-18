@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import BarChartComponent from "./BarChartComponent";
-import PieChartComponent from "./PieChartComponent";
-import LineChartComponent from "./LineChartComponent";
+import BarChartComponent from "./charts/BarChartComponent";
+import PieChartComponent from "./charts/PieChartComponent";
+import LineChartComponent from "./charts/LineChartComponent";
 import "../styles/Dashboard.scss";
-import useThemeMode from "../hooks/useThemeMode";
 
 const Dashboard = () => {
   const {

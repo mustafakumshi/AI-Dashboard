@@ -1,6 +1,6 @@
-import '../styles/Footer.scss';
+import '../../styles/Footer.scss';
 import FooterTop from './FooterTop'
-import FooterBottom from './FooterBottom'; // Import FooterBottom component
+import FooterBottom from './FooterBottom';
 
 const Footer = () => {
   return (
