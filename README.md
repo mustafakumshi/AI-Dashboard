@@ -52,4 +52,4 @@ To get started, follow the steps below:
 
 A detailed video walkthrough of the application, showcasing its features, setup, and usage, is **updating soon**. Please check back later for the video link. In the meantime, you can explore the project by following the instructions above for setting up and running it locally.
 
-- **Video Link**: _Updating Soon_
+- **Video Link**: https://youtu.be/yr7CE4Csq98
